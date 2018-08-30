@@ -1,6 +1,6 @@
 <?php
 
-namespace Vistik\Apm\Http\Middleware;
+namespace Vistik\Apm\Middleware;
 
 use Closure;
 use Exception;
@@ -21,9 +21,19 @@ class ApmMiddleware
      */
     private $requestContext;
 
+    /**
+     * @var integer
+     */
+    private $sampling;
+
+    /**
+     * ApmMiddleware constructor.
+     * @param RequestContext $requestContext
+     */
     public function __construct(RequestContext $requestContext)
     {
         $this->requestContext = $requestContext;
+        $this->sampling = config('apm.samling', 100);
     }
 
     /**
@@ -36,16 +46,22 @@ class ApmMiddleware
     public function handle($request, Closure $next)
     {
         $requestId = $this->requestContext->getId();
-        $userId = $request->getUser() !== null ? $request->getUser() : 'n/a';
+        $userId = Auth::user() ? Auth::user()->id : 'n/a';
 
         $monolog = Log::getMonolog();
         $monolog->pushProcessor(function ($record) use ($userId, $requestId) {
             $record['extra']['user'] = $userId;
             $record['extra']['request_id'] = $requestId;
+
             return $record;
         });
 
         $response = $next($request);
+
+        dd($this->shouldSample());
+        if (!$this->shouldSample()){
+            return $response;
+        }
 
         $responseContent = $response->getContent();
 
@@ -99,10 +115,22 @@ class ApmMiddleware
     protected function getResponseTimeInMs(): int
     {
         // Not defined when running tests
-        if (defined('LARAVEL_START')){
+        if (defined('LARAVEL_START')) {
             return (int)((microtime(true) - LARAVEL_START) * 1000);
         }
 
         return 0.0;
+    }
+
+    protected function shouldSample(): bool
+    {
+        $random = mt_rand(0, 100);
+        dump($random);
+        dd($this->sampling);
+        if ($random <= $this->sampling){
+            return true;
+        }
+
+        return false;
     }
 }

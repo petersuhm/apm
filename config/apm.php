@@ -3,8 +3,28 @@
 return [
     // Filtering
 
+    /*
+      |--------------------------------------------------------------------------
+      | Save the requestedAt attributes on requests in this timezone. Default: UTC
+      |--------------------------------------------------------------------------
+    */
     'timezone' => 'UTC',
-    'trackFullScanQueries' => true,
+
+    /*
+      |--------------------------------------------------------------------------
+      | If you get alot of requests log logging could take up alot of disk space
+      | sampling enables you to record e.g. 10% of the requests
+      |--------------------------------------------------------------------------
+    */
+    'sampling' => 100,
+
+
+    /*
+      |--------------------------------------------------------------------------
+      | Check if queries are full scan queries. Default: false
+      |--------------------------------------------------------------------------
+    */
+    'trackFullScanQueries' => false,
 
     /*
       |--------------------------------------------------------------------------

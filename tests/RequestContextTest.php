@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use Vistik\Apm\Request\RequestContext;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
-use Tests\TestCase;
+use Orchestra\Testbench\TestCase;;
 
 class RequestContextTest extends TestCase
 {
