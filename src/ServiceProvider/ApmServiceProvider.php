@@ -22,6 +22,7 @@ class ApmServiceProvider extends ServiceProvider
             __DIR__.'/config/apm.php' => config_path('apm.php'),
         ]);
 
+        dd(__DIR__);
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
     }
 
