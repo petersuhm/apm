@@ -14,10 +14,10 @@ class QueryLog extends Migration
     public function up()
     {
         Schema::create('apm_queries', function (Blueprint $table) {
+            $table->string('request_id');
             $table->string('sql');
             $table->float('time_ms');
             $table->string('connection');
-            $table->string('request_id');
             $table->timestamps();
         });
     }
