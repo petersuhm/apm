@@ -57,8 +57,7 @@ class ApmMiddleware
         });
 
         $response = $next($request);
-
-        dd($this->shouldSample());
+        
         if (!$this->shouldSample()){
             return $response;
         }
