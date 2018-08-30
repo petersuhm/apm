@@ -125,8 +125,6 @@ class ApmMiddleware
     protected function shouldSample(): bool
     {
         $random = mt_rand(0, 100);
-        dump($random);
-        dd($this->sampling);
         if ($random <= $this->sampling){
             return true;
         }
