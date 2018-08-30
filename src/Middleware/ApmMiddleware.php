@@ -2,17 +2,15 @@
 
 namespace Vistik\Apm\Http\Middleware;
 
-use Apm\Jobs\StoreQueries;
-use Apm\Jobs\StoreRequestData;
-use Apm\Request\RequestContext;
-use Apm\Request\RequestResponseData;
-use Carbon\Carbon;
 use Closure;
-use DateTimeZone;
 use Exception;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Vistik\Apm\Jobs\StoreQueries;
+use Vistik\Apm\Jobs\StoreRequestData;
+use Vistik\Apm\Request\RequestContext;
+use Vistik\Apm\Request\RequestResponseData;
 
 class ApmMiddleware
 {

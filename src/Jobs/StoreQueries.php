@@ -2,8 +2,8 @@
 
 namespace Vistik\Apm\Jobs;
 
-use Apm\Query;
-use Apm\Request\RequestContext;
+use Vistik\Apm\Query;
+use Vistik\Apm\Request\RequestContext;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;

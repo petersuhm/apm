@@ -1,9 +1,9 @@
 <?php
 
-namespace Apm\Jobs;
+namespace Vistik\Apm\Jobs;
 
-use Apm\Request;
-use Apm\Request\RequestResponseData;
+use Vistik\Apm\Request;
+use Vistik\Apm\Request\RequestResponseData;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;

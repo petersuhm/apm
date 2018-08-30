@@ -2,7 +2,7 @@
 
 namespace Tests\Unit;
 
-use Apm\Request\RequestContext;
+use Vistik\Apm\Request\RequestContext;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Tests\TestCase;
