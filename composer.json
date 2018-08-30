@@ -23,7 +23,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Vistik\\Apm\\ApmServiceProvider"
+        "Vistik\\Apm\\ServiceProvider\\ApmServiceProvider"
       ]
     }
   }
