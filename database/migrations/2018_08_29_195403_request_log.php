@@ -14,9 +14,8 @@ class RequestLog extends Migration
     public function up()
     {
         Schema::create('apm_requests', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('user_id')->nullable();
             $table->uuid('uuid');
+            $table->string('user_id')->nullable();
             $table->text('request_body')->nullable();
             $table->text('response_body')->nullable();
             $table->text('headers')->nullable();
