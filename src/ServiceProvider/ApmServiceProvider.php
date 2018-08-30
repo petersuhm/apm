@@ -19,11 +19,10 @@ class ApmServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/config/apm.php' => config_path('apm.php'),
+            __DIR__.'/../../config/apm.php' => config_path('apm.php'),
         ]);
 
-        dd(__DIR__);
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
     }
 
     public function register()
